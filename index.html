@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the Number Game</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    window.addEventListener('mouseover', initLandbot, { once: true });
+    window.addEventListener('touchstart', initLandbot, { once: true });
+    var myLandbot;
+    function initLandbot() {
+      if (!myLandbot) {
+        var s = document.createElement('script');
+        s.type = "module"
+        s.async = true;
+        s.addEventListener('load', function() {
+          var myLandbot = new Landbot.Livechat({
+            configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3141595-CM04094R16UJ2JBM/index.json',
+          });
+        });
+        s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Guess the Number</h1>
+  </header>
+
+  <main>
+    <section class="game">
+      <p>I picked a number between <strong>1 and 100</strong>. Can you guess it?</p>
+      <input type="number" id="guessInput" placeholder="Enter your guess..." min="1" max="100">
+      <button id="guessBtn">Guess</button>
+      <p id="message"></p>
+      <button id="restartBtn" style="display:none;">Play Again</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 | Mini Game in JavaScript</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
